@@ -24,8 +24,8 @@ public class HopfieldNN {
         }
     }
 
-    public WritableImage search(String imageName) {
-        int[] y = marchThroughImage(imageName);
+    public WritableImage search(String path) {
+        int[] y = marchThroughImage(path);
 
         while (true) {
             int[] S = new int[n];
@@ -79,7 +79,7 @@ public class HopfieldNN {
     }
 
     private void setW(String name) {
-        int[] x = marchThroughImage(name);
+        int[] x = marchThroughImage("/home/developer/Java/SII_lb5/src/sample/img/" + name + ".bmp");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i != j) {
@@ -89,15 +89,15 @@ public class HopfieldNN {
         }
     }
 
-    private int[] marchThroughImage(String name) {
+    private int[] marchThroughImage(String path) {
         BufferedImage image = null;
-        File file = new File("/home/developer/Java/SII_lb5/src/sample/img/" + name + ".bmp");
+        File file = new File(path);
         try {
             image = ImageIO.read(file);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        System.out.println(name);
+        System.out.println(path);
         int w = image.getWidth();
         int h = image.getHeight();
         int[] array = new int[h * w];

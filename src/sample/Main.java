@@ -86,7 +86,12 @@ public class Main extends Application {
         hopfieldButton.setLayoutY(310);
         hopfieldButton.setLayoutX(380);
         hopfieldButton.setOnAction(e ->{
-            imageView.setImage(hopfieldNN.search("d1"));
+            String path;
+            if (file != null)
+                path = file.getPath();
+            else
+                path = "/home/developer/Java/SII_lb5/src/sample/img/d1.bmp";
+            imageView.setImage(hopfieldNN.search(path));
         });
 
 
