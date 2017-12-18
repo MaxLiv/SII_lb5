@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class NeyronNetwork {
 
+    String root = "D:\\Desktop\\Универ\\ИИ\\lb5_sii\\SII_lb5\\src\\sample\\img\\";//for windows
+//    String root = "/home/developer/Java/SII_lb5/src/sample/img/";//for linux
+
     final int defI = 50 * 50;
     final int defJ = 50 * 50 / 2;
     final int defK = 4;
@@ -214,30 +217,19 @@ public class NeyronNetwork {
         return array;
     }
 
-
-    // 1 - r
-    // 2 - lr
-    // 3 - l
-    // 4 - d
-    // 5 - e
     public void learning() throws IOException {
-
         setRandomWeight();
-
-//        System.out.println("Ypa");
-
         Map<String, double[]> imgs = new HashMap<>();
-        imgs.put("c", new double[]{0.9, 0.1, 0.1, 0.1, 0.1});
-//        imgs.put("lr", new double[]{0.1, 0.9, 0.1, 0.1, 0.1});
-//        imgs.put("l", new double[]{0.1, 0.1, 0.9, 0.1, 0.1});
-//        imgs.put("d", new double[]{0.1, 0.1, 0.1, 0.9, 0.1});
-//        imgs.put("e", new double[]{0.1, 0.1, 0.1, 0.1, 0.9});
+        imgs.put("s", new double[]{0.9, 0.1, 0.1, 0.1, 0.1});
+        imgs.put("c", new double[]{0.1, 0.9, 0.1, 0.1, 0.1});
+        imgs.put("m", new double[]{0.1, 0.1, 0.9, 0.1, 0.1});
+        imgs.put("h", new double[]{0.1, 0.1, 0.1, 0.9, 0.1});
 
         for (Map.Entry entry : imgs.entrySet()) {
             System.out.println(String.valueOf(entry.getKey()));
             d = (double[]) entry.getValue();
             for (int i = 1; i <= 4; i++) {
-                cicle(marchThroughImage("/home/developer/Java/SII_lb5/src/sample/img/" +
+                cicle(marchThroughImage(root +
                         String.valueOf(entry.getKey()) + i + ".bmp"));
             }
         }

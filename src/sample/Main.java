@@ -30,6 +30,9 @@ public class Main extends Application {
     Label man = new Label();
     Label house = new Label();
 
+    String root = "D:\\Desktop\\Универ\\ИИ\\lb5_sii\\SII_lb5\\src\\sample\\img\\";//for windows
+//    String root = "/home/developer/Java/SII_lb5/src/sample/img/";//for linux
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         //open image
@@ -74,7 +77,7 @@ public class Main extends Application {
             if (file != null)
                 path = file.getPath();
             else
-                path = "/home/developer/Java/SII_lb5/src/blackcircle.png";
+                path = "D:\\Desktop\\Универ\\ИИ\\lb5_sii\\SII_lb5\\src\\blackcircle.png";
             Map<String, Double> element = network.findElement(path);
             ship.setText(String.valueOf(element.get("ship"))+"%");
             car.setText(String.valueOf(element.get("car"))+"%");
@@ -90,7 +93,7 @@ public class Main extends Application {
             if (file != null)
                 path = file.getPath();
             else
-                path = "/home/developer/Java/SII_lb5/src/sample/img/d1.bmp";
+                path = root + "d1.bmp";
             imageView.setImage(hopfieldNN.search(path));
         });
 

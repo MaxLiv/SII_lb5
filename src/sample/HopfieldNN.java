@@ -15,8 +15,11 @@ public class HopfieldNN {
     int m = 4;
     int w[][] = new int[n][n];
 
+    String root = "D:\\Desktop\\Универ\\ИИ\\lb5_sii\\SII_lb5\\src\\sample\\img\\";//for windows
+//    String root = "/home/developer/Java/SII_lb5/src/sample/img/";//for linux
+
     public HopfieldNN() {
-        String[] names = {"l", "r", "d", "e"};
+        String[] names = {"s", "c", "m", "h"};
         for (int i = 0; i < m; i++) {
             for (int j = 1; j <= 3; j++) {
                 setW(names[i] + j);
@@ -79,7 +82,7 @@ public class HopfieldNN {
     }
 
     private void setW(String name) {
-        int[] x = marchThroughImage("/home/developer/Java/SII_lb5/src/sample/img/" + name + ".bmp");
+        int[] x = marchThroughImage(root + name + ".bmp");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i != j) {
@@ -93,6 +96,7 @@ public class HopfieldNN {
         BufferedImage image = null;
         File file = new File(path);
         try {
+            System.out.println(path);
             image = ImageIO.read(file);
         } catch (IOException e) {
             System.err.println(e.getMessage());
