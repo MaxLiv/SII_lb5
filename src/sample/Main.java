@@ -23,6 +23,7 @@ public class Main extends Application {
     private Image image = new Image("blackcircle.png");
     private ImageView imageView = new ImageView();
     private NeyronNetwork network = new NeyronNetwork();
+    private HopfieldNN hopfieldNN = new HopfieldNN();
 
     Label ship = new Label();
     Label car = new Label();
@@ -81,6 +82,14 @@ public class Main extends Application {
             house.setText(String.valueOf(element.get("house"))+"%");
         });
 
+        Button hopfieldButton = new Button("сеть Хопфилда");
+        hopfieldButton.setLayoutY(310);
+        hopfieldButton.setLayoutX(380);
+        hopfieldButton.setOnAction(e ->{
+            imageView.setImage(hopfieldNN.search("d1"));
+        });
+
+
 
         imageView.setImage(image);
         imageView.setLayoutY(0);
@@ -111,7 +120,7 @@ public class Main extends Application {
         // Display image on screen
         StackPane root = new StackPane();
         Pane pane = new Pane();
-        pane.getChildren().addAll(imageView, openButton, learnButton, recognizeButton, getGrid());
+        pane.getChildren().addAll(imageView, openButton, learnButton, recognizeButton,hopfieldButton ,getGrid());
         root.getChildren().add(pane);
         Scene scene = new Scene(root, 530, 350);
         primaryStage.setTitle("Image recognize test");
